@@ -46,7 +46,7 @@ namespace OnePushSnap
         int HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             // フックしたキー
-            var snap_trigger = (int)wParam;
+            int snap_trigger = (int)wParam;
             Keys key = (Keys)(short)Marshal.ReadInt32(lParam);
 
             //Console.WriteLine(snap_trigger);
