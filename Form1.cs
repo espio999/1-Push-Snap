@@ -7,6 +7,7 @@ namespace OnePushSnap
     {
         NotifyIcon n_ico = new NotifyIcon();
         KeyHook kh = new KeyHook();
+        Boolean working_flg = false;
 
         public configuration_form()
         {
@@ -68,14 +69,23 @@ namespace OnePushSnap
 
         private void ToolStripMenuItem_Start_Click(object sender, EventArgs e)
         {
-            n_ico.Icon = Properties.Resources.camera_on;
-            kh.Hook();
+            if (working_flg == false)
+            {
+                working_flg = true;
+                n_ico.Icon = Properties.Resources.camera_on;
+                kh.Hook();
+            }
         }
 
         private void ToolStripMenuItem_Stop_Click(object sender, EventArgs e)
         {
-            n_ico.Icon = Properties.Resources.camera_off;
-            kh.HookEnd();
+            if (working_flg == true)
+            {
+                working_flg = false;
+                n_ico.Icon = Properties.Resources.camera_off;
+                kh.HookEnd();
+            }
+            
         }
 
         private void ToolStripMenuItem_Close_Click(object sender, EventArgs e)
