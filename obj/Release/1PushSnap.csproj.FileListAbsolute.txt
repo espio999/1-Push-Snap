@@ -1,0 +1,8 @@
+D:\user temp\work\1PushSnap\bin\Release\1PushSnap.exe.config
+D:\user temp\work\1PushSnap\bin\Release\1PushSnap.exe
+D:\user temp\work\1PushSnap\obj\Release\1PushSnap.csproj.SuggestedBindingRedirects.cache
+D:\user temp\work\1PushSnap\obj\Release\OnePushSnap.configuration_form.resources
+D:\user temp\work\1PushSnap\obj\Release\OnePushSnap.Properties.Resources.resources
+D:\user temp\work\1PushSnap\obj\Release\1PushSnap.csproj.GenerateResource.cache
+D:\user temp\work\1PushSnap\obj\Release\1PushSnap.csproj.CoreCompileInputs.cache
+D:\user temp\work\1PushSnap\obj\Release\1PushSnap.exe

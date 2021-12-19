@@ -1,0 +1,11 @@
+D:\user temp\work\tasktray\obj\Debug\1PushSnap.csproj.AssemblyReference.cache
+D:\user temp\work\tasktray\obj\Debug\1PushSnap.csproj.SuggestedBindingRedirects.cache
+D:\user temp\work\tasktray\obj\Debug\OnePushSnap.Properties.Resources.resources
+D:\user temp\work\tasktray\obj\Debug\1PushSnap.csproj.GenerateResource.cache
+D:\user temp\work\tasktray\obj\Debug\1PushSnap.csproj.CoreCompileInputs.cache
+D:\user temp\work\tasktray\obj\Debug\1PushSnap.exe
+D:\user temp\work\tasktray\obj\Debug\1PushSnap.pdb
+D:\user temp\work\tasktray\bin\Debug\1PushSnap.exe.config
+D:\user temp\work\tasktray\bin\Debug\1PushSnap.exe
+D:\user temp\work\tasktray\bin\Debug\1PushSnap.pdb
+D:\user temp\work\tasktray\obj\Debug\OnePushSnap.configuration_form.resources
