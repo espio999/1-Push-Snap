@@ -61,7 +61,7 @@ namespace OnePushSnap
             Graphics my_graphics = Graphics.FromImage(my_bmp);
 
             my_graphics.CopyFromScreen(my_rectangle.X, my_rectangle.Y, 0, 0, my_rectangle.Size);
-            my_bmp.Save(filename(Properties.Resources.file_prefix), System.Drawing.Imaging.ImageFormat.Jpeg);
+            Task.Factory.StartNew(() => my_bmp.Save(filename(Properties.Resources.file_prefix), System.Drawing.Imaging.ImageFormat.Jpeg));
         }
 
 

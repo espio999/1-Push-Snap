@@ -29,26 +29,31 @@ namespace OnePushSnap
             ContextMenuStrip cms = new ContextMenuStrip();
             n_ico.ContextMenuStrip = cms;
 
+            /// Information
             ToolStripMenuItem tsmi_information = new ToolStripMenuItem();
             cms.Items.Add(tsmi_information);
             tsmi_information.Text = Properties.Resources.context_menu_item_information;
             tsmi_information.Click += ToolStripMenuItem_Information_Click;
 
+            ///Save To...
             ToolStripMenuItem tsmi_save_to = new ToolStripMenuItem();
             cms.Items.Add(tsmi_save_to);
             tsmi_save_to.Text = Properties.Resources.context_menu_item_save;
             tsmi_save_to.Click += ToolStripMenuItem_SaveTo_Click;
 
+            /// Start
             ToolStripMenuItem tsmi_start = new ToolStripMenuItem();
             cms.Items.Add(tsmi_start);
             tsmi_start.Text = Properties.Resources.context_menu_item_start;
             tsmi_start.Click += ToolStripMenuItem_Start_Click;
 
+            /// Stop
             ToolStripMenuItem tsmi_stop = new ToolStripMenuItem();
             cms.Items.Add(tsmi_stop);
             tsmi_stop.Text = Properties.Resources.context_menu_item_stop;
             tsmi_stop.Click += ToolStripMenuItem_Stop_Click;
 
+            /// Close
             ToolStripMenuItem tsmi_close = new ToolStripMenuItem();
             cms.Items.Add(tsmi_close);
             tsmi_close.Text = Properties.Resources.context_menu_item_close;

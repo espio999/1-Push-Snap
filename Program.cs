@@ -14,6 +14,8 @@ namespace OnePushSnap
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            /// Run application without window
             //Application.Run(new Form1());
 
             new configuration_form();

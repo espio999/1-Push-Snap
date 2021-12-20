@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OnePushSnap
@@ -25,15 +26,6 @@ namespace OnePushSnap
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
             {
-                // フックを行う
-                // 第1引数   フックするイベントの種類
-                //   13はキーボードフックを表す
-                // 第2引数 フック時のメソッドのアドレス
-                //   フックメソッドを登録する
-                // 第3引数   インスタンスハンドル
-                //   現在実行中のハンドルを渡す
-                // 第4引数   スレッドID
-                //   0を指定すると、すべてのスレッドでフックされる
                 hookPtr = SetWindowsHookEx(
                     13,
                     HookCallback,
@@ -43,25 +35,32 @@ namespace OnePushSnap
             }
         }
 
-        int HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        void CallbackTask(int snap_trigger, Keys key)
         {
-            // フックしたキー
-            int snap_trigger = (int)wParam;
-            Keys key = (Keys)(short)Marshal.ReadInt32(lParam);
-
-            //Console.WriteLine(snap_trigger);
-            //Console.WriteLine(key);
-
             if (snap_trigger == Properties.Settings.Default.trigger_event && key.ToString() == Properties.Settings.Default.trigger_key)
             {
                 Capture capt = new Capture();
                 capt.snapActiveWindow();
                 //capt.snapScreen();
             }
+        }
 
-            // 1を戻すとフックしたキーが捨てられます
-            //return 1;
+        int HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            /// key event and key
+            int snap_trigger = (int)wParam;
+            Keys key = (Keys)(short)Marshal.ReadInt32(lParam);
+
+            /// debug
+            //Console.WriteLine(snap_trigger);
+            //Console.WriteLine(key);
+
+            Task.Factory.StartNew(() => CallbackTask(snap_trigger, key));
+
             return 0;
+
+            /// "return 1;" drops hooked keys
+            //return 1;
         }
 
         public void HookEnd()
