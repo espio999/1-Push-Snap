@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
-
 
 namespace OnePushSnap
 {
@@ -12,6 +12,15 @@ namespace OnePushSnap
         [STAThread]
         static void Main()
         {
+
+            Mutex mtx = new Mutex(false, "one");
+
+            /// Prevent application from multiplying
+            if (mtx.WaitOne(0, false) == false)
+            {
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
