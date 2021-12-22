@@ -37,9 +37,5 @@ Taskbar bar icon turn into black.
 ### Close
 Close the tool, and the taskbar icon is disappeared.
 
-## Note
-Please stop monitoring of keyboard event or close the tool during no need to take screenshots.  
-As programming or document writing, a lot of key down events in a short time during keyboard event monitoring sometime brings crash of the tool.
-
 ## Reference
 [Technically Impossible - 1 Push Snap](https://impsbl.hatenablog.jp/entry/1PushSnap)
