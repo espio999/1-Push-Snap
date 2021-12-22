@@ -100,15 +100,6 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   Configuraton に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string configuration_form_text {
-            get {
-                return ResourceManager.GetString("configuration_form_text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Close に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string context_menu_item_close {
@@ -163,15 +154,6 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   Save to... に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string folder_button_text {
-            get {
-                return ResourceManager.GetString("folder_button_text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   userprofile に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string initial_folder {
@@ -183,9 +165,9 @@ namespace OnePushSnap.Properties {
         /// <summary>
         ///   Your file is saved to  に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string message_akternative_folder {
+        internal static string message_alternative_folder {
             get {
-                return ResourceManager.GetString("message_akternative_folder", resourceCulture);
+                return ResourceManager.GetString("message_alternative_folder", resourceCulture);
             }
         }
         

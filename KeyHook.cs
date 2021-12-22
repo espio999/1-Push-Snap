@@ -19,23 +19,27 @@ namespace OnePushSnap
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern IntPtr GetModuleHandle(string lpModuleName);
 
-        IntPtr hookPtr = IntPtr.Zero;
+        private static delegateHookCallback dhc;
+        private static IntPtr hookPtr = IntPtr.Zero;
 
         public void Hook()
         {
+            int WH_KEYBOARD_LL = 13;
+
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
             {
+                dhc = new delegateHookCallback(HookCallback);
+
                 hookPtr = SetWindowsHookEx(
-                    13,
-                    HookCallback,
+                    WH_KEYBOARD_LL,
+                    dhc,
                     GetModuleHandle(curModule.ModuleName),
-                    0
-                );
+                    0);
             }
         }
 
-        void CallbackTask(int snap_trigger, Keys key)
+        private void CallbackTask(int snap_trigger, Keys key)
         {
             if (snap_trigger == Properties.Settings.Default.trigger_event && key.ToString() == Properties.Settings.Default.trigger_key)
             {
@@ -45,7 +49,7 @@ namespace OnePushSnap
             }
         }
 
-        int HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        private int HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             /// key event and key
             int snap_trigger = (int)wParam;
@@ -56,7 +60,6 @@ namespace OnePushSnap
             //Console.WriteLine(key);
 
             Task.Factory.StartNew(() => CallbackTask(snap_trigger, key));
-
             return 0;
 
             /// "return 1;" drops hooked keys

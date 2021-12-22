@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OnePushSnap 
 {
     public partial class configuration_form : Form
     {
-        NotifyIcon n_ico = new NotifyIcon();
-        KeyHook kh = new KeyHook();
-        Boolean working_flg = false;
+        private static NotifyIcon n_ico = new NotifyIcon();
+        private static KeyHook kh = new KeyHook();
+        private static Boolean working_flg = false;
 
         public configuration_form()
         {
@@ -90,7 +91,6 @@ namespace OnePushSnap
                 n_ico.Icon = Properties.Resources.camera_off;
                 kh.HookEnd();
             }
-            
         }
 
         private void ToolStripMenuItem_Close_Click(object sender, EventArgs e)

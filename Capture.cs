@@ -46,7 +46,7 @@ namespace OnePushSnap
                 my_dir = Properties.Settings.Default.default_folder + @"\";
 
                 string msg = Properties.Resources.message_non_existent_folder + "\n" + 
-                    Properties.Resources.message_akternative_folder + "\n" +
+                    Properties.Resources.message_alternative_folder + "\n" +
                     Properties.Settings.Default.default_folder;
                 Task.Factory.StartNew(() => MessageBox.Show(msg));
             }

@@ -130,9 +130,6 @@
   <data name="camera_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icon\camera on.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="configuration_form_text" xml:space="preserve">
-    <value>Configuraton</value>
-  </data>
   <data name="context_menu_item_close" xml:space="preserve">
     <value>Close</value>
   </data>
@@ -151,13 +148,10 @@
   <data name="file_prefix" xml:space="preserve">
     <value>1PushSnap</value>
   </data>
-  <data name="folder_button_text" xml:space="preserve">
-    <value>Save to...</value>
-  </data>
   <data name="initial_folder" xml:space="preserve">
     <value>userprofile</value>
   </data>
-  <data name="message_akternative_folder" xml:space="preserve">
+  <data name="message_alternative_folder" xml:space="preserve">
     <value>Your file is saved to </value>
   </data>
   <data name="message_non-existent_folder" xml:space="preserve">
