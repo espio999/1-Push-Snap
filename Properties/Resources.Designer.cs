@@ -63,9 +63,29 @@ namespace OnePushSnap.Properties {
         /// <summary>
         ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Icon app {
+        internal static System.Drawing.Icon _1pushsnap_app {
             get {
-                object obj = ResourceManager.GetObject("app", resourceCulture);
+                object obj = ResourceManager.GetObject("_1pushsnap_app", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon _1pushsnap_off {
+            get {
+                object obj = ResourceManager.GetObject("_1pushsnap_off", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon _1pushsnap_on {
+            get {
+                object obj = ResourceManager.GetObject("_1pushsnap_on", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
@@ -76,26 +96,6 @@ namespace OnePushSnap.Properties {
         internal static string app_name {
             get {
                 return ResourceManager.GetString("app_name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Icon camera_off {
-            get {
-                object obj = ResourceManager.GetObject("camera_off", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
-        /// </summary>
-        internal static System.Drawing.Icon camera_on {
-            get {
-                object obj = ResourceManager.GetObject("camera_on", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
             }
         }
         
@@ -163,16 +163,9 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   Your file is saved to  に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        internal static string message_alternative_folder {
-            get {
-                return ResourceManager.GetString("message_alternative_folder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   The folder you specified does not exist. に類似しているローカライズされた文字列を検索します。
+        ///   The folder you specified does not exist.
+        ///Your file is saved to
+        /// に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string message_non_existent_folder {
             get {
@@ -181,7 +174,8 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   Screenshot images are saved to  に類似しているローカライズされた文字列を検索します。
+        ///   Screenshot images are saved to 
+        /// に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string message_save_folder {
             get {

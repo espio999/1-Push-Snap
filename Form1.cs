@@ -23,7 +23,7 @@ namespace OnePushSnap
 
         private void makeContextMenu()
         {
-            n_ico.Icon = Properties.Resources.camera_off;
+            n_ico.Icon = Properties.Resources._1pushsnap_off;
             n_ico.Visible = true;
             n_ico.Text = Properties.Resources.app_name;
 
@@ -63,8 +63,7 @@ namespace OnePushSnap
 
         private void ToolStripMenuItem_Information_Click(object sender, EventArgs e)
         {
-            string msg = Properties.Resources.message_save_folder + "\n" + 
-                Properties.Settings.Default.save_folder;
+            string msg = Properties.Resources.message_save_folder + Properties.Settings.Default.save_folder;
             MessageBox.Show(msg);
         }
 
@@ -78,7 +77,7 @@ namespace OnePushSnap
             if (working_flg == false)
             {
                 working_flg = true;
-                n_ico.Icon = Properties.Resources.camera_on;
+                n_ico.Icon = Properties.Resources._1pushsnap_on;
                 kh.Hook();
             }
         }
@@ -88,7 +87,7 @@ namespace OnePushSnap
             if (working_flg == true)
             {
                 working_flg = false;
-                n_ico.Icon = Properties.Resources.camera_off;
+                n_ico.Icon = Properties.Resources._1pushsnap_off;
                 kh.HookEnd();
             }
         }

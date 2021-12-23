@@ -117,18 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="app" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon\app.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="app_name" xml:space="preserve">
     <value>1 Push Snap</value>
-  </data>
-  <data name="camera_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon\camera off.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="camera_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icon\camera on.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="context_menu_item_close" xml:space="preserve">
     <value>Close</value>
@@ -151,13 +141,23 @@
   <data name="initial_folder" xml:space="preserve">
     <value>userprofile</value>
   </data>
-  <data name="message_alternative_folder" xml:space="preserve">
-    <value>Your file is saved to </value>
-  </data>
   <data name="message_non-existent_folder" xml:space="preserve">
-    <value>The folder you specified does not exist.</value>
+    <value>The folder you specified does not exist.
+Your file is saved to
+</value>
   </data>
   <data name="message_save_folder" xml:space="preserve">
-    <value>Screenshot images are saved to </value>
+    <value>Screenshot images are saved to 
+</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="_1pushsnap_app" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon\1pushsnap-app.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1pushsnap_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon\1pushsnap-off.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1pushsnap_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon\1pushsnap-on.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
