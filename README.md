@@ -1,4 +1,5 @@
-![application icon](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20211223/20211223211549.png)
+![application icon](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20211223/20211223212918.png)
+
 # 1-Push-Snap
 Take a screenshot and output the image file of the current window or screen with single push of the Print Screen button.
 
