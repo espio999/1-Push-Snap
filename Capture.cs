@@ -36,7 +36,7 @@ namespace OnePushSnap
         String filename(String val)
         {
             String my_dir;
-            String my_file = DateTime.Now.ToString("yyyyMMddhhmmss")
+            String my_file = DateTime.Now.ToString("yyyyMMddHHmmss")
                 + DateTime.Now.Millisecond.ToString()
                 + "." + Properties.Settings.Default.save_image_type;
 
@@ -65,26 +65,29 @@ namespace OnePushSnap
             switch (Properties.Settings.Default.save_image_type)
             {
                 case "BMP":
-                    Task.Factory.StartNew(() => my_bmp.Save(
+                    my_bmp.Save(
                         filename(Properties.Resources.file_prefix),
-                        System.Drawing.Imaging.ImageFormat.Bmp));
+                        System.Drawing.Imaging.ImageFormat.Bmp);
                     break;
                 case "GIF":
-                    Task.Factory.StartNew(() => my_bmp.Save(
+                    my_bmp.Save(
                         filename(Properties.Resources.file_prefix),
-                        System.Drawing.Imaging.ImageFormat.Gif));
+                        System.Drawing.Imaging.ImageFormat.Gif);
                     break;
                 case "JPG":
-                    Task.Factory.StartNew(() => my_bmp.Save(
+                    my_bmp.Save(
                         filename(Properties.Resources.file_prefix),
-                        System.Drawing.Imaging.ImageFormat.Jpeg));
+                        System.Drawing.Imaging.ImageFormat.Jpeg);
                     break;
                 case "PNG":
-                    Task.Factory.StartNew(() => my_bmp.Save(
+                    my_bmp.Save(
                         filename(Properties.Resources.file_prefix),
-                        System.Drawing.Imaging.ImageFormat.Png));
+                        System.Drawing.Imaging.ImageFormat.Png);
                     break;
             }
+
+            my_graphics.Dispose();
+            my_bmp.Dispose();
         }
 
 
@@ -101,12 +104,12 @@ namespace OnePushSnap
             int rectangle_height = wc.bottom_right_y - wc.upper_left_y;
             Rectangle my_rectangle = new Rectangle(wc.upper_left_x, wc.upper_left_y, rectangle_width, rectangle_height);
 
-            snap(my_rectangle);
+            Task.Factory.StartNew(() => snap(my_rectangle));
         }
 
         public void snapScreen()
         {
-            snap(Screen.PrimaryScreen.Bounds);
+            Task.Factory.StartNew(() => snap(Screen.PrimaryScreen.Bounds));
         }
     }
 }

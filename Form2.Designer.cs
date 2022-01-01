@@ -96,6 +96,7 @@
             this.Controls.Add(this.flpImageType);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmImageType";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image format";
             this.Load += new System.EventHandler(this.frmImageType_Load);
             this.flpImageType.ResumeLayout(false);
