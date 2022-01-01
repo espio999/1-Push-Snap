@@ -9,7 +9,7 @@ Take a screenshot and output the image file of the current window or screen with
 ## Feature
 Push PrtScn button, and screenshot of the active window is saved in JPEG format to the specified folder.
 
-This tool monitors keyboard event.  Finding key down event of Print Screen button, it takes screenshot and saves it as JPEG file to the folder specified in advance.
+This tool monitors keyboard event.  Finding key down event of Print Screen button, it takes screenshot and saves it to the preferred folder.  
 The initial save folder is the home of user (%userprofile%).  If the specified folder doesn't exist when screenshot is saved, an image file is saved to the initial save folder.
 
 ## Usage - Context menu
@@ -26,6 +26,10 @@ Screenshot image files are saved here.
 ### Save To...
 User can change the save folder here.  
 ![menu item - Save To...](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20211223/20211223204116.png)
+
+### Image format
+User can change the image format.  
+![menu item - Image format](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20220101/20220101214658.png)
 
 ### Start
 The tool starts keyboard event monitoring.  
