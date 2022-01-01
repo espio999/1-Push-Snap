@@ -109,6 +109,15 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
+        ///   Image format に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string context_menu_item_image_format {
+            get {
+                return ResourceManager.GetString("context_menu_item_image_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Information に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string context_menu_item_information {
@@ -154,11 +163,20 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   userprofile に類似しているローカライズされた文字列を検索します。
+        ///   BMP|GIF|JPG|PNG に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string initial_folder {
+        internal static string image_format {
             get {
-                return ResourceManager.GetString("initial_folder", resourceCulture);
+                return ResourceManager.GetString("image_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Screenshot image is saved in に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string message_image_type_label {
+            get {
+                return ResourceManager.GetString("message_image_type_label", resourceCulture);
             }
         }
         

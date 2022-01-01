@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace OnePushSnap 
@@ -10,15 +10,40 @@ namespace OnePushSnap
         private static KeyHook kh = new KeyHook();
         private static Boolean working_flg = false;
 
+        private static frmImageType single_instance;
+
+        public static frmImageType callImageTypeForm
+        {
+            get {
+                if (single_instance == null || single_instance.IsDisposed)
+                {
+                    single_instance = new frmImageType();
+                }
+
+                return single_instance;
+            }
+        }
+
         public configuration_form()
         {
             InitializeComponent();
 
             this.ShowInTaskbar = true;
-            Properties.Settings.Default.save_folder = Environment.GetEnvironmentVariable(Properties.Resources.initial_folder);
-            Properties.Settings.Default.default_folder = Environment.GetEnvironmentVariable(Properties.Resources.initial_folder);
 
+            setDefaultConfiguration();
             makeContextMenu();
+        }
+
+        private void setDefaultConfiguration()
+        {
+            /// folder
+            if (Directory.Exists(Properties.Settings.Default.save_folder) == false)
+            {
+                Properties.Settings.Default.save_folder = Environment.GetEnvironmentVariable(Properties.Settings.Default.initial_folder);
+                Properties.Settings.Default.Save();
+            }
+
+            Properties.Settings.Default.default_folder = Environment.GetEnvironmentVariable(Properties.Settings.Default.initial_folder);
         }
 
         private void makeContextMenu()
@@ -41,6 +66,12 @@ namespace OnePushSnap
             cms.Items.Add(tsmi_save_to);
             tsmi_save_to.Text = Properties.Resources.context_menu_item_save;
             tsmi_save_to.Click += ToolStripMenuItem_SaveTo_Click;
+
+            ///Image format
+            ToolStripMenuItem tsmi_image_format = new ToolStripMenuItem();
+            cms.Items.Add(tsmi_image_format);
+            tsmi_image_format.Text = Properties.Resources.context_menu_item_image_format;
+            tsmi_image_format.Click += ToolStripMenuItem_ImageFormat_Click;
 
             /// Start
             ToolStripMenuItem tsmi_start = new ToolStripMenuItem();
@@ -65,6 +96,12 @@ namespace OnePushSnap
         {
             string msg = Properties.Resources.message_save_folder + Properties.Settings.Default.save_folder;
             MessageBox.Show(msg);
+        }
+
+        private void ToolStripMenuItem_ImageFormat_Click(object sender, EventArgs e)
+        {
+            frmImageType image_form = callImageTypeForm;
+            image_form.Show();
         }
 
         private void ToolStripMenuItem_SaveTo_Click(object sender, EventArgs e)
@@ -106,6 +143,7 @@ namespace OnePushSnap
             if (fbd.ShowDialog(this) == DialogResult.OK)
             {
                 Properties.Settings.Default.save_folder = fbd.SelectedPath.ToString();
+                Properties.Settings.Default.Save();
             }
         }
     }

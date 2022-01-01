@@ -36,7 +36,9 @@ namespace OnePushSnap
         String filename(String val)
         {
             String my_dir;
-            String my_file = DateTime.Now.ToString("yyyyMMddhhmmss") + DateTime.Now.Millisecond.ToString() + ".jpg";
+            String my_file = DateTime.Now.ToString("yyyyMMddhhmmss")
+                + DateTime.Now.Millisecond.ToString()
+                + "." + Properties.Settings.Default.save_image_type;
 
             if (Directory.Exists(Properties.Settings.Default.save_folder)){
                 my_dir = Properties.Settings.Default.save_folder + @"\";
@@ -59,7 +61,30 @@ namespace OnePushSnap
             Graphics my_graphics = Graphics.FromImage(my_bmp);
 
             my_graphics.CopyFromScreen(my_rectangle.X, my_rectangle.Y, 0, 0, my_rectangle.Size);
-            Task.Factory.StartNew(() => my_bmp.Save(filename(Properties.Resources.file_prefix), System.Drawing.Imaging.ImageFormat.Jpeg));
+
+            switch (Properties.Settings.Default.save_image_type)
+            {
+                case "BMP":
+                    Task.Factory.StartNew(() => my_bmp.Save(
+                        filename(Properties.Resources.file_prefix),
+                        System.Drawing.Imaging.ImageFormat.Bmp));
+                    break;
+                case "GIF":
+                    Task.Factory.StartNew(() => my_bmp.Save(
+                        filename(Properties.Resources.file_prefix),
+                        System.Drawing.Imaging.ImageFormat.Gif));
+                    break;
+                case "JPG":
+                    Task.Factory.StartNew(() => my_bmp.Save(
+                        filename(Properties.Resources.file_prefix),
+                        System.Drawing.Imaging.ImageFormat.Jpeg));
+                    break;
+                case "PNG":
+                    Task.Factory.StartNew(() => my_bmp.Save(
+                        filename(Properties.Resources.file_prefix),
+                        System.Drawing.Imaging.ImageFormat.Png));
+                    break;
+            }
         }
 
 

@@ -23,27 +23,21 @@ namespace OnePushSnap.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("257")]
         public int trigger_event {
             get {
                 return ((int)(this["trigger_event"]));
             }
-            set {
-                this["trigger_event"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("PrintScreen")]
         public string trigger_key {
             get {
                 return ((string)(this["trigger_key"]));
-            }
-            set {
-                this["trigger_key"] = value;
             }
         }
         
@@ -68,6 +62,27 @@ namespace OnePushSnap.Properties {
             }
             set {
                 this["default_folder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("JPG")]
+        public string save_image_type {
+            get {
+                return ((string)(this["save_image_type"]));
+            }
+            set {
+                this["save_image_type"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("userprofile")]
+        public string initial_folder {
+            get {
+                return ((string)(this["initial_folder"]));
             }
         }
     }
