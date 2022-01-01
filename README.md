@@ -27,6 +27,10 @@ Screenshot image files are saved here.
 User can change the save folder here.  
 ![menu item - Save To...](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20211223/20211223204116.png)
 
+### Image format
+User can change the image format.  
+![menu item - Image format](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20220101/20220101214658.png)
+
 ### Start
 The tool starts keyboard event monitoring.  
 During monitoring, taskbar icon turn into orange.  
