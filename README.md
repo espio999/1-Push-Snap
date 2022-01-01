@@ -45,4 +45,4 @@ Taskbar bar icon turn into black.
 Close the tool, and the taskbar icon is disappeared.
 
 ## Reference
-[Technically Impossible - 1 Push Snap](https://impsbl.hatenablog.jp/entry/1PushSnap1.1)
+[Technically Impossible - 1 Push Snap](https://impsbl.hatenablog.jp/entry/1PushSnap1.2)
