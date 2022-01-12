@@ -15,7 +15,8 @@ This tool monitors keyboard event.  Finding key down event of Print Screen butto
 2. it makes it preferred image file as BMP, GIF, JPG or PNG.
 3. it saves it to the preferred folder.
 
-The initial save folder is the home of user (%userprofile%).  If the specified folder doesn't exist when screenshot is saved, an image file is saved to the initial save folder.
+The initial save folder is the home of user (%userprofile%).  
+If the specified folder doesn't exist when screenshot is saved, an image file is saved to the initial save folder.
 
 ## Usage - Context menu
 This tool has no form, and is stationed in Taskbar.  
