@@ -8,7 +8,7 @@ namespace OnePushSnap
     {
         private static NotifyIcon n_ico = new NotifyIcon();
         private static KeyHook kh = new KeyHook();
-        private static Boolean working_flg = false;
+        internal static Boolean working_flg = false;
 
         private static frmImageType single_instance;
 
@@ -108,31 +108,36 @@ namespace OnePushSnap
         {
             setFolderPath();
         }
+                
+        internal static void switcher()
+        {
+            working_flg = kh.start_stop_switch();
+
+            if (working_flg == true)
+            {
+                n_ico.Icon = Properties.Resources._1pushsnap_on;
+            }
+            else
+            {
+                n_ico.Icon = Properties.Resources._1pushsnap_off;
+            }
+        }
 
         private void ToolStripMenuItem_Start_Click(object sender, EventArgs e)
         {
-            if (working_flg == false)
-            {
-                working_flg = true;
-                n_ico.Icon = Properties.Resources._1pushsnap_on;
-                kh.Hook();
-            }
+            switcher();
         }
 
         private void ToolStripMenuItem_Stop_Click(object sender, EventArgs e)
         {
-            if (working_flg == true)
-            {
-                working_flg = false;
-                n_ico.Icon = Properties.Resources._1pushsnap_off;
-                kh.HookEnd();
-            }
+            switcher();
         }
+
 
         private void ToolStripMenuItem_Close_Click(object sender, EventArgs e)
         {
-            n_ico.Visible = false;
             kh.HookEnd();
+            n_ico.Visible = false;
             Application.Exit();
         }
 

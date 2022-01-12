@@ -5,7 +5,7 @@
     <Setting Name="trigger_event" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">257</Value>
     </Setting>
-    <Setting Name="trigger_key" Type="System.String" Scope="Application">
+    <Setting Name="key_snap" Type="System.String" Scope="Application">
       <Value Profile="(Default)">PrintScreen</Value>
     </Setting>
     <Setting Name="save_folder" Type="System.String" Scope="User">
@@ -19,6 +19,9 @@
     </Setting>
     <Setting Name="initial_folder" Type="System.String" Scope="Application">
       <Value Profile="(Default)">userprofile</Value>
+    </Setting>
+    <Setting Name="key_pause" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Pause</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -41,11 +41,32 @@ namespace OnePushSnap
 
         private void CallbackTask(int snap_trigger, Keys key)
         {
-            if (snap_trigger == Properties.Settings.Default.trigger_event && key.ToString() == Properties.Settings.Default.trigger_key)
+            if (snap_trigger == Properties.Settings.Default.trigger_event){
+                if (key.ToString() == Properties.Settings.Default.key_snap)
+                {
+                    Capture capt = new Capture();
+                    capt.snapActiveWindow();
+                    //capt.snapScreen();
+                }
+
+                if (key.ToString() == Properties.Settings.Default.key_pause)
+                {
+                    configuration_form.switcher();
+                }
+            }
+        }
+
+        public Boolean start_stop_switch()
+        {
+            if (configuration_form.working_flg == true)
             {
-                Capture capt = new Capture();
-                capt.snapActiveWindow();
-                //capt.snapScreen();
+                this.HookEnd();
+                return false;
+            }
+            else
+            {
+                this.Hook();
+                return true;
             }
         }
 

@@ -35,9 +35,9 @@ namespace OnePushSnap.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("PrintScreen")]
-        public string trigger_key {
+        public string key_snap {
             get {
-                return ((string)(this["trigger_key"]));
+                return ((string)(this["key_snap"]));
             }
         }
         
@@ -83,6 +83,15 @@ namespace OnePushSnap.Properties {
         public string initial_folder {
             get {
                 return ((string)(this["initial_folder"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Pause")]
+        public string key_pause {
+            get {
+                return ((string)(this["key_pause"]));
             }
         }
     }
