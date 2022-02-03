@@ -5,9 +5,23 @@ namespace OnePushSnap
 {
     public partial class frmImageType : Form
     {
-        public frmImageType()
+        private frmImageType()
         {
             InitializeComponent();
+        }
+
+        private static frmImageType single_instance;
+
+        public static frmImageType callImageTypeForm()
+        {
+            {
+                if (single_instance == null || single_instance.IsDisposed)
+                {
+                    single_instance = new frmImageType();
+                }
+
+                return single_instance;
+            }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -27,15 +41,12 @@ namespace OnePushSnap
             flpImageType.Controls.Add(btnOK);
         }
 
+        /// ComboBox with supporting image formats
         private void makeImageTypeCombo()
         {
             string[] image_format = Properties.Resources.image_format.Split('|');
 
-            foreach (var item in image_format)
-            {
-                cmbImageType.Items.Add(item);
-            }
-
+            cmbImageType.Items.AddRange(image_format);
             cmbImageType.SelectedIndex = Array.IndexOf(image_format, Properties.Settings.Default.save_image_type);
             
         }

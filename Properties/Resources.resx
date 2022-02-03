@@ -132,8 +132,14 @@
   <data name="context_menu_item_save" xml:space="preserve">
     <value>Save To...</value>
   </data>
-  <data name="context_menu_item_start" xml:space="preserve">
-    <value>Start</value>
+  <data name="context_menu_item_start_1pushsnap" xml:space="preserve">
+    <value>Start - 1 push screenshot</value>
+  </data>
+  <data name="context_menu_item_start_igg_keyboard" xml:space="preserve">
+    <value>Start - Ignore key type</value>
+  </data>
+  <data name="context_menu_item_start_igg_mouse" xml:space="preserve">
+    <value>Start - Ignore mouse click</value>
   </data>
   <data name="context_menu_item_stop" xml:space="preserve">
     <value>Stop</value>
@@ -144,17 +150,23 @@
   <data name="image_format" xml:space="preserve">
     <value>BMP|GIF|JPG|PNG</value>
   </data>
+  <data name="message_igg_keyboard" xml:space="preserve">
+    <value>Click OK for unlocking keyboard</value>
+  </data>
+  <data name="message_igg_mouse" xml:space="preserve">
+    <value>Press OK for unlocking mouse</value>
+  </data>
   <data name="message_image_type_label" xml:space="preserve">
     <value>Screenshot image is saved in</value>
   </data>
   <data name="message_non-existent_folder" xml:space="preserve">
     <value>The folder you specified does not exist.
 Your file is saved to
-</value>
+{0}</value>
   </data>
   <data name="message_save_folder" xml:space="preserve">
     <value>Screenshot images are saved to 
-</value>
+{0}</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="_1pushsnap_app" type="System.Resources.ResXFileRef, System.Windows.Forms">

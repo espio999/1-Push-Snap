@@ -33,26 +33,26 @@ namespace OnePushSnap
         [DllImport("user32.dll")]
         static extern IntPtr GetWindowDC(IntPtr hWnd);
 
-        String filename(String val)
+        String filename(String my_prefix)
         {
             String my_dir;
-            String my_file = DateTime.Now.ToString("yyyyMMddHHmmss")
-                + DateTime.Now.Millisecond.ToString()
-                + "." + Properties.Settings.Default.save_image_type;
+            String my_file = String.Join("", new String[]{
+                my_prefix, 
+                DateTime.Now.ToString("yyyyMMddHHmmss"), 
+                DateTime.Now.Millisecond.ToString(), ".", Properties.Settings.Default.save_image_type});
 
             if (Directory.Exists(Properties.Settings.Default.save_folder)){
-                my_dir = Properties.Settings.Default.save_folder + @"\";
+                my_dir = Properties.Settings.Default.save_folder;
             }
             else
             {
-                my_dir = Properties.Settings.Default.default_folder + @"\";
+                my_dir = Properties.Settings.Default.default_folder;
 
-                string msg = Properties.Resources.message_non_existent_folder + Properties.Settings.Default.default_folder;
+                String msg = String.Format(Properties.Resources.message_non_existent_folder, Properties.Settings.Default.default_folder);
                 Task.Factory.StartNew(() => MessageBox.Show(msg));
             }
 
-            return (my_dir + val + my_file);
-
+            return String.Join(@"\", new String[] { my_dir, my_file});
         }
 
         public void snap(Rectangle my_rectangle)

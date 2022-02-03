@@ -136,11 +136,29 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   Start に類似しているローカライズされた文字列を検索します。
+        ///   Start - 1 push screenshot に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static string context_menu_item_start {
+        internal static string context_menu_item_start_1pushsnap {
             get {
-                return ResourceManager.GetString("context_menu_item_start", resourceCulture);
+                return ResourceManager.GetString("context_menu_item_start_1pushsnap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Start - Ignore key type に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string context_menu_item_start_igg_keyboard {
+            get {
+                return ResourceManager.GetString("context_menu_item_start_igg_keyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Start - Ignore mouse click に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string context_menu_item_start_igg_mouse {
+            get {
+                return ResourceManager.GetString("context_menu_item_start_igg_mouse", resourceCulture);
             }
         }
         
@@ -172,6 +190,24 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
+        ///   Click OK for unlocking keyboard に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string message_igg_keyboard {
+            get {
+                return ResourceManager.GetString("message_igg_keyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Press OK for unlocking mouse に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string message_igg_mouse {
+            get {
+                return ResourceManager.GetString("message_igg_mouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Screenshot image is saved in に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string message_image_type_label {
@@ -183,7 +219,7 @@ namespace OnePushSnap.Properties {
         /// <summary>
         ///   The folder you specified does not exist.
         ///Your file is saved to
-        /// に類似しているローカライズされた文字列を検索します。
+        ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string message_non_existent_folder {
             get {
@@ -193,7 +229,7 @@ namespace OnePushSnap.Properties {
         
         /// <summary>
         ///   Screenshot images are saved to 
-        /// に類似しているローカライズされた文字列を検索します。
+        ///{0} に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string message_save_folder {
             get {

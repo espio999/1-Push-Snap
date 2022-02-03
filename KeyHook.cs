@@ -22,14 +22,33 @@ namespace OnePushSnap
         private static delegateHookCallback dhc;
         private static IntPtr hookPtr = IntPtr.Zero;
 
-        public void Hook()
+        public void start_stop_switch()
+        {
+            switch (configuration_form.working_flg)
+            {
+                case 0:
+                    HookEnd();
+                    break;
+                case 1:
+                    HookFor1PushSnap();
+                    break;
+                case 2:
+                    HookForIggKeyboard();
+                    break;
+                case 3:
+                    HookForIggMouse();
+                    break;
+            }
+        }
+
+        public void HookFor1PushSnap()
         {
             int WH_KEYBOARD_LL = 13;
 
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
             {
-                dhc = new delegateHookCallback(HookCallback);
+                dhc = new delegateHookCallback(HookCallbackFor1PushSnap);
 
                 hookPtr = SetWindowsHookEx(
                     WH_KEYBOARD_LL,
@@ -39,38 +58,41 @@ namespace OnePushSnap
             }
         }
 
-        private void CallbackTask(int snap_trigger, Keys key)
+        public void HookForIggKeyboard()
         {
-            if (snap_trigger == Properties.Settings.Default.trigger_event){
-                if (key.ToString() == Properties.Settings.Default.key_snap)
-                {
-                    Capture capt = new Capture();
-                    capt.snapActiveWindow();
-                    //capt.snapScreen();
-                }
+            int WH_KEYBOARD_LL = 13;
 
-                if (key.ToString() == Properties.Settings.Default.key_pause)
-                {
-                    configuration_form.switcher();
-                }
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
+            {
+                dhc = new delegateHookCallback(HookCallbackForIgg);
+
+                hookPtr = SetWindowsHookEx(
+                    WH_KEYBOARD_LL,
+                    dhc,
+                    GetModuleHandle(curModule.ModuleName),
+                    0);
             }
         }
 
-        public Boolean start_stop_switch()
+        public void HookForIggMouse()
         {
-            if (configuration_form.working_flg == true)
+            int WH_MOUSE_LL = 14;
+
+            using (Process curProcess = Process.GetCurrentProcess())
+            using (ProcessModule curModule = curProcess.MainModule)
             {
-                this.HookEnd();
-                return false;
-            }
-            else
-            {
-                this.Hook();
-                return true;
+                dhc = new delegateHookCallback(HookCallbackForIgg);
+
+                hookPtr = SetWindowsHookEx(
+                    WH_MOUSE_LL,
+                    dhc,
+                    GetModuleHandle(curModule.ModuleName),
+                    0);
             }
         }
 
-        private int HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        private int HookCallbackFor1PushSnap(int nCode, IntPtr wParam, IntPtr lParam)
         {
             /// key event and key
             int snap_trigger = (int)wParam;
@@ -80,11 +102,34 @@ namespace OnePushSnap
             //Console.WriteLine(snap_trigger);
             //Console.WriteLine(key);
 
-            Task.Factory.StartNew(() => CallbackTask(snap_trigger, key));
+            Task.Factory.StartNew(() => CallbackTaskFor1PushSnap(snap_trigger, key));
             return 0;
+        }
 
+        private int HookCallbackForIgg(int nCode, IntPtr wParam, IntPtr lParam)
+        {
             /// "return 1;" drops hooked keys
-            //return 1;
+            return 1;
+        }
+
+        private void CallbackTaskFor1PushSnap(int snap_trigger, Keys key)
+        {
+            if (snap_trigger == Properties.Settings.Default.trigger_event)
+            {
+                /// when PrintScreen was pressed
+                if (key.ToString() == Properties.Settings.Default.key_snap)
+                {
+                    Capture capt = new Capture();
+                    capt.snapActiveWindow();
+                    //capt.snapScreen();
+                }
+
+                /// when Pause was pressed
+                if (key.ToString() == Properties.Settings.Default.key_pause)
+                {
+                    configuration_form.clickStop();
+                }
+            }
         }
 
         public void HookEnd()

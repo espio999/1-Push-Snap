@@ -8,23 +8,40 @@ namespace OnePushSnap
     {
         private static NotifyIcon n_ico = new NotifyIcon();
         private static KeyHook kh = new KeyHook();
-        internal static Boolean working_flg = false;
 
-        private static frmImageType single_instance;
+        /// mode
+        /// 0 = off
+        /// 1 = screenshot
+        /// 2 = ignore keybord
+        /// 3 = ignore mouse
+        internal static int working_flg = 0;
 
-        public static frmImageType callImageTypeForm
+        /// taskbar context menu
+        private ContextMenuStrip cms = new ContextMenuStrip();
+        private ToolStripMenuItem tsmi_information = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_save_to = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_image_format = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_start_1pushsnap = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_start_igg_keyboard = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_start_igg_mouse = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_stop = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_close = new ToolStripMenuItem();
+
+        private static configuration_form single_instance;
+
+        public static configuration_form getInstance()
         {
-            get {
+            {
                 if (single_instance == null || single_instance.IsDisposed)
                 {
-                    single_instance = new frmImageType();
+                    single_instance = new configuration_form();
                 }
 
                 return single_instance;
             }
         }
 
-        public configuration_form()
+        private configuration_form()
         {
             InitializeComponent();
 
@@ -44,49 +61,58 @@ namespace OnePushSnap
             }
 
             Properties.Settings.Default.default_folder = Environment.GetEnvironmentVariable(Properties.Settings.Default.initial_folder);
+            this.Activated += MainForm_Activated;
+        }
+
+        private void MainForm_Activated(object sender, System.EventArgs e)
+        {
+            this.Hide();
         }
 
         private void makeContextMenu()
         {
+            /// taskbar icon
             n_ico.Icon = Properties.Resources._1pushsnap_off;
             n_ico.Visible = true;
             n_ico.Text = Properties.Resources.app_name;
-
-            ContextMenuStrip cms = new ContextMenuStrip();
             n_ico.ContextMenuStrip = cms;
 
             /// Information
-            ToolStripMenuItem tsmi_information = new ToolStripMenuItem();
             cms.Items.Add(tsmi_information);
             tsmi_information.Text = Properties.Resources.context_menu_item_information;
             tsmi_information.Click += ToolStripMenuItem_Information_Click;
 
             ///Save To...
-            ToolStripMenuItem tsmi_save_to = new ToolStripMenuItem();
             cms.Items.Add(tsmi_save_to);
             tsmi_save_to.Text = Properties.Resources.context_menu_item_save;
             tsmi_save_to.Click += ToolStripMenuItem_SaveTo_Click;
 
             ///Image format
-            ToolStripMenuItem tsmi_image_format = new ToolStripMenuItem();
             cms.Items.Add(tsmi_image_format);
             tsmi_image_format.Text = Properties.Resources.context_menu_item_image_format;
             tsmi_image_format.Click += ToolStripMenuItem_ImageFormat_Click;
 
-            /// Start
-            ToolStripMenuItem tsmi_start = new ToolStripMenuItem();
-            cms.Items.Add(tsmi_start);
-            tsmi_start.Text = Properties.Resources.context_menu_item_start;
-            tsmi_start.Click += ToolStripMenuItem_Start_Click;
+            /// Start - 1 push screenshot
+            cms.Items.Add(tsmi_start_1pushsnap);
+            tsmi_start_1pushsnap.Text = Properties.Resources.context_menu_item_start_1pushsnap;
+            tsmi_start_1pushsnap.Click += ToolStripMenuItem_Start_1PushSnap_Click;
+
+            /// Start - ignore keyboard
+            cms.Items.Add(tsmi_start_igg_keyboard);
+            tsmi_start_igg_keyboard.Text = Properties.Resources.context_menu_item_start_igg_keyboard;
+            tsmi_start_igg_keyboard.Click += ToolStripMenuItem_Start_IggKeyboard_Click;
+
+            /// Start - ignore mouse
+            cms.Items.Add(tsmi_start_igg_mouse);
+            tsmi_start_igg_mouse.Text = Properties.Resources.context_menu_item_start_igg_mouse;
+            tsmi_start_igg_mouse.Click += ToolStripMenuItem_Start_IggMouse_Click;
 
             /// Stop
-            ToolStripMenuItem tsmi_stop = new ToolStripMenuItem();
             cms.Items.Add(tsmi_stop);
             tsmi_stop.Text = Properties.Resources.context_menu_item_stop;
             tsmi_stop.Click += ToolStripMenuItem_Stop_Click;
 
             /// Close
-            ToolStripMenuItem tsmi_close = new ToolStripMenuItem();
             cms.Items.Add(tsmi_close);
             tsmi_close.Text = Properties.Resources.context_menu_item_close;
             tsmi_close.Click += ToolStripMenuItem_Close_Click;
@@ -94,14 +120,15 @@ namespace OnePushSnap
 
         private void ToolStripMenuItem_Information_Click(object sender, EventArgs e)
         {
-            string msg = Properties.Resources.message_save_folder + Properties.Settings.Default.save_folder;
+            //String msg = Properties.Resources.message_save_folder + Properties.Settings.Default.save_folder;
+            String msg = String.Format(Properties.Resources.message_save_folder, Properties.Settings.Default.save_folder);
             MessageBox.Show(msg);
         }
 
         private void ToolStripMenuItem_ImageFormat_Click(object sender, EventArgs e)
         {
-            frmImageType image_form = callImageTypeForm;
-            image_form.Show();
+            frmImageType fit = frmImageType.callImageTypeForm();
+            fit.Show();
         }
 
         private void ToolStripMenuItem_SaveTo_Click(object sender, EventArgs e)
@@ -109,30 +136,55 @@ namespace OnePushSnap
             setFolderPath();
         }
                 
-        internal static void switcher()
+        private void switcher()
         {
-            working_flg = kh.start_stop_switch();
+            kh.start_stop_switch();
 
-            if (working_flg == true)
+            switch (working_flg)
             {
-                n_ico.Icon = Properties.Resources._1pushsnap_on;
+                case 0:
+                    n_ico.Icon = Properties.Resources._1pushsnap_off;
+                    enableMenuItems();
+                    break;
+                case 1:
+                    n_ico.Icon = Properties.Resources._1pushsnap_on;
+                    disableMenuItems();
+                    break;
+                default:
+                    disableMenuItems();
+                    break;
             }
-            else
-            {
-                n_ico.Icon = Properties.Resources._1pushsnap_off;
-            }
+
         }
 
-        private void ToolStripMenuItem_Start_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Start_1PushSnap_Click(object sender, EventArgs e)
         {
+            working_flg = 1;
             switcher();
+        }
+
+        private void ToolStripMenuItem_Start_IggKeyboard_Click(object sender, EventArgs e)
+        {
+            working_flg = 2;
+            switcher();
+
+            MessageBox.Show(Properties.Resources.message_igg_keyboard);
+            tsmi_stop.PerformClick();
+        }
+        private void ToolStripMenuItem_Start_IggMouse_Click(object sender, EventArgs e)
+        {
+            working_flg = 3;
+            switcher();
+
+            MessageBox.Show(Properties.Resources.message_igg_mouse);
+            tsmi_stop.PerformClick();
         }
 
         private void ToolStripMenuItem_Stop_Click(object sender, EventArgs e)
         {
+            working_flg = 0;
             switcher();
         }
-
 
         private void ToolStripMenuItem_Close_Click(object sender, EventArgs e)
         {
@@ -149,6 +201,34 @@ namespace OnePushSnap
             {
                 Properties.Settings.Default.save_folder = fbd.SelectedPath.ToString();
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        private void enableMenuItems()
+        {
+            tsmi_start_1pushsnap.Enabled = true;
+            tsmi_start_igg_keyboard.Enabled = true;
+            tsmi_start_igg_mouse.Enabled = true;
+        }
+
+        private void disableMenuItems()
+        {
+            tsmi_start_1pushsnap.Enabled = false;
+            tsmi_start_igg_keyboard.Enabled = false;
+            tsmi_start_igg_mouse.Enabled = false;
+        }
+
+        private delegate void delegateClickStop();
+
+        internal static void clickStop()
+        {
+            if (single_instance.InvokeRequired)
+            {
+                single_instance.Invoke(new delegateClickStop(clickStop));
+            }
+            else
+            {
+                single_instance.tsmi_stop.PerformClick();
             }
         }
     }

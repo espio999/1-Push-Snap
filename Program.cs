@@ -27,8 +27,11 @@ namespace OnePushSnap
             /// Run application without window
             //Application.Run(new Form1());
 
-            new configuration_form();
-            Application.Run();
+            /// get single instance
+            //new configuration_form();
+            //configuration_form.getInstance();
+
+            Application.Run(configuration_form.getInstance());
         }
     }
 }
