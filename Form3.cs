@@ -46,10 +46,14 @@ namespace OnePushSnap
 
             foreach (frmCropMode form in blank_forms)
             {
+                form.Dispose();
+
+                /*
                 form.Invoke((MethodInvoker)delegate ()
                 {
-                    form.Close();
+                    form.Dispose();
                 });
+                */
             }
 
             configuration_form.kh.start_stop_switch();
@@ -64,6 +68,11 @@ namespace OnePushSnap
         {
             e.Graphics.FillRectangle(Brushes.White, Properties.Settings.Default.crop_rectangle);
             e.Graphics.DrawRectangle(new Pen(Color.GhostWhite), Properties.Settings.Default.crop_rectangle);
+        }
+
+        private void Form_Load(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.crop_rectangle = new Rectangle(0, 0, 0, 0);
         }
     }
 }

@@ -30,6 +30,7 @@ namespace OnePushSnap
         private ToolStripMenuItem tsmi_close = new ToolStripMenuItem();
 
         private static configuration_form single_instance;
+        private delegate void delegateClickStop();
 
         public static configuration_form getInstance()
         {
@@ -244,8 +245,6 @@ namespace OnePushSnap
             tsmi_start_igg_keyboard.Enabled = false;
             tsmi_start_igg_mouse.Enabled = false;
         }
-
-        private delegate void delegateClickStop();
 
         internal static void clickStop()
         {
