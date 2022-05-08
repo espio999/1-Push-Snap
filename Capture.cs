@@ -107,6 +107,11 @@ namespace OnePushSnap
             Task.Factory.StartNew(() => snap(my_rectangle));
         }
 
+        public void snapCrop()
+        {
+            Task.Factory.StartNew(() => snap(Properties.Settings.Default.crop_rectangle));
+        }
+
         public void snapScreen()
         {
             Task.Factory.StartNew(() => snap(Screen.PrimaryScreen.Bounds));

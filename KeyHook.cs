@@ -33,9 +33,12 @@ namespace OnePushSnap
                     HookFor1PushSnap();
                     break;
                 case 2:
+                    HookFor1PushSnap();
+                    break;
+                case 102:
                     HookForIggKeyboard();
                     break;
-                case 3:
+                case 103:
                     HookForIggMouse();
                     break;
             }
@@ -120,8 +123,19 @@ namespace OnePushSnap
                 if (key.ToString() == Properties.Settings.Default.key_snap)
                 {
                     Capture capt = new Capture();
-                    capt.snapActiveWindow();
-                    //capt.snapScreen();
+
+                    switch (configuration_form.working_flg)
+                    {
+                        case 1:
+                            capt.snapActiveWindow();
+                            break;
+                        case 2:
+                            capt.snapCrop();
+                            break;
+                        default:
+                            //capt.snapScreen();
+                            break;
+                    }
                 }
 
                 /// when Pause was pressed

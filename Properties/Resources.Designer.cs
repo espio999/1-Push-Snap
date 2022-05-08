@@ -136,11 +136,20 @@ namespace OnePushSnap.Properties {
         }
         
         /// <summary>
-        ///   Start - 1 push screenshot に類似しているローカライズされた文字列を検索します。
+        ///   Start - 1 push snap に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string context_menu_item_start_1pushsnap {
             get {
                 return ResourceManager.GetString("context_menu_item_start_1pushsnap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Start - Crop snap に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string context_menu_item_start_cropsnap {
+            get {
+                return ResourceManager.GetString("context_menu_item_start_cropsnap", resourceCulture);
             }
         }
         
@@ -168,6 +177,16 @@ namespace OnePushSnap.Properties {
         internal static string context_menu_item_stop {
             get {
                 return ResourceManager.GetString("context_menu_item_stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (アイコン) に類似した型 System.Drawing.Icon のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Icon cropmode_on {
+            get {
+                object obj = ResourceManager.GetObject("cropmode_on", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

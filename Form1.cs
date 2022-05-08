@@ -7,13 +7,14 @@ namespace OnePushSnap
     public partial class configuration_form : Form
     {
         private static NotifyIcon n_ico = new NotifyIcon();
-        private static KeyHook kh = new KeyHook();
+        internal static KeyHook kh = new KeyHook();
 
         /// mode
         /// 0 = off
-        /// 1 = screenshot
-        /// 2 = ignore keybord
-        /// 3 = ignore mouse
+        /// 1 = 1 push snap
+        /// 2 = crop snap
+        /// 102 = ignore keybord
+        /// 103 = ignore mouse
         internal static int working_flg = 0;
 
         /// taskbar context menu
@@ -22,6 +23,7 @@ namespace OnePushSnap
         private ToolStripMenuItem tsmi_save_to = new ToolStripMenuItem();
         private ToolStripMenuItem tsmi_image_format = new ToolStripMenuItem();
         private ToolStripMenuItem tsmi_start_1pushsnap = new ToolStripMenuItem();
+        private ToolStripMenuItem tsmi_start_cropsnap = new ToolStripMenuItem();
         private ToolStripMenuItem tsmi_start_igg_keyboard = new ToolStripMenuItem();
         private ToolStripMenuItem tsmi_start_igg_mouse = new ToolStripMenuItem();
         private ToolStripMenuItem tsmi_stop = new ToolStripMenuItem();
@@ -92,10 +94,15 @@ namespace OnePushSnap
             tsmi_image_format.Text = Properties.Resources.context_menu_item_image_format;
             tsmi_image_format.Click += ToolStripMenuItem_ImageFormat_Click;
 
-            /// Start - 1 push screenshot
+            /// Start - 1 push snap
             cms.Items.Add(tsmi_start_1pushsnap);
             tsmi_start_1pushsnap.Text = Properties.Resources.context_menu_item_start_1pushsnap;
             tsmi_start_1pushsnap.Click += ToolStripMenuItem_Start_1PushSnap_Click;
+
+            /// Start - Crop snap
+            cms.Items.Add(tsmi_start_cropsnap);
+            tsmi_start_cropsnap.Text = Properties.Resources.context_menu_item_start_cropsnap;
+            tsmi_start_cropsnap.Click += ToolStripMenuItem_Start_CropSnap_Click;
 
             /// Start - ignore keyboard
             cms.Items.Add(tsmi_start_igg_keyboard);
@@ -150,6 +157,10 @@ namespace OnePushSnap
                     n_ico.Icon = Properties.Resources._1pushsnap_on;
                     disableMenuItems();
                     break;
+                case 2:
+                    n_ico.Icon = Properties.Resources.cropmode_on;
+                    disableMenuItems();
+                    break;
                 default:
                     disableMenuItems();
                     break;
@@ -163,17 +174,31 @@ namespace OnePushSnap
             switcher();
         }
 
-        private void ToolStripMenuItem_Start_IggKeyboard_Click(object sender, EventArgs e)
+        private void ToolStripMenuItem_Start_CropSnap_Click(object sender, EventArgs e)
         {
             working_flg = 2;
+            switcher();
+
+            frmCropMode form = new frmCropMode();
+
+            foreach(Screen screen in Screen.AllScreens)
+            {
+                form.overlayCropForm(screen);
+            }
+        }
+
+        private void ToolStripMenuItem_Start_IggKeyboard_Click(object sender, EventArgs e)
+        {
+            working_flg = 102;
             switcher();
 
             MessageBox.Show(Properties.Resources.message_igg_keyboard);
             tsmi_stop.PerformClick();
         }
+
         private void ToolStripMenuItem_Start_IggMouse_Click(object sender, EventArgs e)
         {
-            working_flg = 3;
+            working_flg = 103;
             switcher();
 
             MessageBox.Show(Properties.Resources.message_igg_mouse);
@@ -207,6 +232,7 @@ namespace OnePushSnap
         private void enableMenuItems()
         {
             tsmi_start_1pushsnap.Enabled = true;
+            tsmi_start_cropsnap.Enabled = true;
             tsmi_start_igg_keyboard.Enabled = true;
             tsmi_start_igg_mouse.Enabled = true;
         }
@@ -214,6 +240,7 @@ namespace OnePushSnap
         private void disableMenuItems()
         {
             tsmi_start_1pushsnap.Enabled = false;
+            tsmi_start_cropsnap.Enabled= false;
             tsmi_start_igg_keyboard.Enabled = false;
             tsmi_start_igg_mouse.Enabled = false;
         }
@@ -231,5 +258,6 @@ namespace OnePushSnap
                 single_instance.tsmi_stop.PerformClick();
             }
         }
+
     }
 }
