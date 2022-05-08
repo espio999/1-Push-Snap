@@ -1,16 +1,19 @@
 ![application icon](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20211223/20211223212918.png)
 
 # 1-Push-Snap
-With single push of the Print Screen button, take a screenshot and output the image file of the current window or screen.
+With single push of the Print Screen button, take a screenshot and output the image file of 
+- current window or screen
+- cropped area on screen
 
-Usual step as Alt + Ctrl + Print Screen, and Ctrl + C to Paint is nore required.
+Usual step as Alt + Ctrl + Print Screen, and Ctrl + C to Paint is not required.
 
 ## Requirement
 .NET Framework 4.8
 
 ## Feature
 ### 1 push screenshot
-Just pushing Printscreen key, and screenshot of the active window is saved in the preferred folder.
+Just pushing Printscreen key, and screenshot of the active window is saved in the preferred folder.  
+In crop mode, it snapshots cropped area.  Cropped position is kept during this mode.  Pushing Printscreen keeps output image files of cropped area unless stopping this mode.
 
 This tool monitors keyboard event.  Finding key down event of Print Screen button, 
 
@@ -30,7 +33,7 @@ This if for
 ## Usage - Context menu
 This tool has no form, and is stationed in Taskbar.  
 Context menu is displayed with right click.  
-![context menu](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20220203/20220203212554.png)
+![context menu](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20220508/20220508120603.png)
 
 ### Information
 The current save folder is indicated.  
@@ -46,10 +49,20 @@ User can change the save folder here.
 User can change the image format.  
 ![menu item - Image format](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20220112/20220112230451.jpg)
 
-### Start - 1 Push screenshot
+### Start - 1 Push snap
 The tool starts keyboard event monitoring.  
 During monitoring,
 - taskbar icon turn into orange.
+- pushing Printscreen key takes screenshot.
+- pushing Pause key stops keyboard event monitoring.
+-- taskbar icon turn into white.
+
+### Start - Crop snap
+![crop mode](https://cdn-ak.f.st-hatena.com/images/fotolife/e/espio999/20220508/20220508120607.png)  
+Drog mouse with pressing left click, cropped are is captured.  After the first capture unless out from this mode, pushing Printscreen captures cropped area, not active window.  
+During monitoring,
+- taskbar icon turn into orange.
+- Cropped area is caputed.
 - pushing Printscreen key takes screenshot.
 - pushing Pause key stops keyboard event monitoring.
 -- taskbar icon turn into white.
