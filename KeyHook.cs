@@ -4,6 +4,9 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using GR = OnePushSnap.Properties.Resources;
+using GS = OnePushSnap.Properties.Settings;
+
 namespace OnePushSnap
 {
     internal class KeyHook
@@ -24,7 +27,7 @@ namespace OnePushSnap
 
         public void start_stop_switch()
         {
-            switch (configuration_form.working_flg)
+            switch (GS.Default.working_flg)
             {
                 case 0:
                     HookEnd();
@@ -117,14 +120,14 @@ namespace OnePushSnap
 
         private void CallbackTaskFor1PushSnap(int snap_trigger, Keys key)
         {
-            if (snap_trigger == Properties.Settings.Default.trigger_event)
+            if (snap_trigger == GS.Default.trigger_event)
             {
                 /// when PrintScreen was pressed
-                if (key.ToString() == Properties.Settings.Default.key_snap)
+                if (key.ToString() == GS.Default.key_snap)
                 {
                     Capture capt = new Capture();
 
-                    switch (configuration_form.working_flg)
+                    switch (GS.Default.working_flg)
                     {
                         case 1:
                             capt.snapActiveWindow();
@@ -139,7 +142,7 @@ namespace OnePushSnap
                 }
 
                 /// when Pause was pressed
-                if (key.ToString() == Properties.Settings.Default.key_pause)
+                if (key.ToString() == GS.Default.key_pause)
                 {
                     configuration_form.clickStop();
                 }

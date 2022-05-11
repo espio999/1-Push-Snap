@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 
+using GR = OnePushSnap.Properties.Resources;
+using GS = OnePushSnap.Properties.Settings;
+
 namespace OnePushSnap
 {
     public partial class frmImageType : Form
@@ -26,14 +29,14 @@ namespace OnePushSnap
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.save_image_type = cmbImageType.SelectedItem.ToString();
-            Properties.Settings.Default.Save();
+            GS.Default.save_image_type = cmbImageType.SelectedItem.ToString();
+            GS.Default.Save();
             this.Close();
         }
 
         private void frmImageType_Load(object sender, EventArgs e)
         {
-            lblImageType.Text = Properties.Resources.message_image_type_label;
+            lblImageType.Text = GR.message_image_type_label;
             makeImageTypeCombo();
 
             flpImageType.Controls.Add(lblImageType);
@@ -44,10 +47,10 @@ namespace OnePushSnap
         /// ComboBox with supporting image formats
         private void makeImageTypeCombo()
         {
-            string[] image_format = Properties.Resources.image_format.Split('|');
+            string[] image_format = GR.image_format.Split('|');
 
             cmbImageType.Items.AddRange(image_format);
-            cmbImageType.SelectedIndex = Array.IndexOf(image_format, Properties.Settings.Default.save_image_type);
+            cmbImageType.SelectedIndex = Array.IndexOf(image_format, GS.Default.save_image_type);
             
         }
     }

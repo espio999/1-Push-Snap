@@ -106,5 +106,17 @@ namespace OnePushSnap.Properties {
                 this["crop_rectangle"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int working_flg {
+            get {
+                return ((int)(this["working_flg"]));
+            }
+            set {
+                this["working_flg"] = value;
+            }
+        }
     }
 }

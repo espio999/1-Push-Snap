@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
+using GS = OnePushSnap.Properties.Settings;
+
 namespace OnePushSnap
 {
     public partial class frmCropMode : Form
@@ -29,7 +31,7 @@ namespace OnePushSnap
         {
             if (e.Button == MouseButtons.Left)
             {
-                Properties.Settings.Default.crop_rectangle = new Rectangle(
+                GS.Default.crop_rectangle = new Rectangle(
                     Math.Min(e.X, mouse_location.X),
                     Math.Min(e.Y, mouse_location.Y),
                     Math.Abs(e.X - mouse_location.X),
@@ -42,21 +44,15 @@ namespace OnePushSnap
         private void Form_MouseUp(object sender, MouseEventArgs e)
         {
             Capture capt = new Capture();
-            capt.snap(Properties.Settings.Default.crop_rectangle);
+            capt.snap(GS.Default.crop_rectangle);
 
             foreach (frmCropMode form in blank_forms)
             {
                 form.Dispose();
-
-                /*
-                form.Invoke((MethodInvoker)delegate ()
-                {
-                    form.Dispose();
-                });
-                */
             }
 
-            configuration_form.kh.start_stop_switch();
+            //configuration_form.kh.start_stop_switch();
+            configuration_form.kh.HookFor1PushSnap();
         }
 
         private void Form_MouseDown(object sender, MouseEventArgs e)
@@ -66,13 +62,13 @@ namespace OnePushSnap
 
         private void Form_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.FillRectangle(Brushes.White, Properties.Settings.Default.crop_rectangle);
-            e.Graphics.DrawRectangle(new Pen(Color.GhostWhite), Properties.Settings.Default.crop_rectangle);
+            e.Graphics.FillRectangle(Brushes.White, GS.Default.crop_rectangle);
+            e.Graphics.DrawRectangle(new Pen(Color.GhostWhite), GS.Default.crop_rectangle);
         }
 
         private void Form_Load(object sender, EventArgs e)
         {
-            Properties.Settings.Default.crop_rectangle = new Rectangle(0, 0, 0, 0);
+            GS.Default.crop_rectangle = new Rectangle(0, 0, 0, 0);
         }
     }
 }
