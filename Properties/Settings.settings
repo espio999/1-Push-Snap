@@ -24,7 +24,7 @@
       <Value Profile="(Default)">Pause</Value>
     </Setting>
     <Setting Name="crop_rectangle" Type="System.Drawing.Rectangle" Scope="User">
-      <Value Profile="(Default)">0, 0, 0, 0</Value>
+      <Value Profile="(Default)">0, 0, 1, 1</Value>
     </Setting>
     <Setting Name="working_flg" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

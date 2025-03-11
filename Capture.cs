@@ -33,11 +33,11 @@ namespace OnePushSnap
         [DllImport("user32.dll")]
         static extern IntPtr GetWindowDC(IntPtr hWnd);
 
-        String filename(String my_prefix)
+        String filename()
         {
             String my_dir;
             String my_file = String.Join("", new String[]{
-                my_prefix, 
+                Properties.Resources.file_prefix, 
                 DateTime.Now.ToString("yyyyMMddHHmmss"), 
                 DateTime.Now.Millisecond.ToString(), ".", Properties.Settings.Default.save_image_type});
 
@@ -66,22 +66,22 @@ namespace OnePushSnap
             {
                 case "BMP":
                     my_bmp.Save(
-                        filename(Properties.Resources.file_prefix),
+                        filename(),
                         System.Drawing.Imaging.ImageFormat.Bmp);
                     break;
                 case "GIF":
                     my_bmp.Save(
-                        filename(Properties.Resources.file_prefix),
+                        filename(),
                         System.Drawing.Imaging.ImageFormat.Gif);
                     break;
                 case "JPG":
                     my_bmp.Save(
-                        filename(Properties.Resources.file_prefix),
+                        filename(),
                         System.Drawing.Imaging.ImageFormat.Jpeg);
                     break;
                 case "PNG":
                     my_bmp.Save(
-                        filename(Properties.Resources.file_prefix),
+                        filename(),
                         System.Drawing.Imaging.ImageFormat.Png);
                     break;
             }

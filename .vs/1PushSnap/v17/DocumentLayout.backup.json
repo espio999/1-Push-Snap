@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "G:\\work\\1-Push-Snap20250311\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{76323973-1DA8-48F7-955D-8329FA8F11F6}|1PushSnap.csproj|g:\\work\\1-push-snap20250311\\capture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76323973-1DA8-48F7-955D-8329FA8F11F6}|1PushSnap.csproj|solutionrelative:capture.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76323973-1DA8-48F7-955D-8329FA8F11F6}|1PushSnap.csproj|g:\\work\\1-push-snap20250311\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76323973-1DA8-48F7-955D-8329FA8F11F6}|1PushSnap.csproj|solutionrelative:form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{76323973-1DA8-48F7-955D-8329FA8F11F6}|1PushSnap.csproj|g:\\work\\1-push-snap20250311\\keyhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76323973-1DA8-48F7-955D-8329FA8F11F6}|1PushSnap.csproj|solutionrelative:keyhook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form3.cs",
+              "DocumentMoniker": "G:\\work\\1-Push-Snap20250311\\Form3.cs",
+              "RelativeDocumentMoniker": "Form3.cs",
+              "ToolTip": "G:\\work\\1-Push-Snap20250311\\Form3.cs",
+              "RelativeToolTip": "Form3.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAEwC4AAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T04:29:19.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "KeyHook.cs",
+              "DocumentMoniker": "G:\\work\\1-Push-Snap20250311\\KeyHook.cs",
+              "RelativeDocumentMoniker": "KeyHook.cs",
+              "ToolTip": "G:\\work\\1-Push-Snap20250311\\KeyHook.cs",
+              "RelativeToolTip": "KeyHook.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAcwA0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T03:12:36.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Capture.cs",
+              "DocumentMoniker": "G:\\work\\1-Push-Snap20250311\\Capture.cs",
+              "RelativeDocumentMoniker": "Capture.cs",
+              "ToolTip": "G:\\work\\1-Push-Snap20250311\\Capture.cs",
+              "RelativeToolTip": "Capture.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T03:07:33.846Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

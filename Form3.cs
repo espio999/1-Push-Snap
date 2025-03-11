@@ -68,7 +68,7 @@ namespace OnePushSnap
 
         private void Form_Load(object sender, EventArgs e)
         {
-            GS.Default.crop_rectangle = new Rectangle(0, 0, 0, 0);
+            GS.Default.crop_rectangle = new Rectangle(0, 0, 1, 1);
         }
     }
 }
