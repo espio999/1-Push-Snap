@@ -39,7 +39,8 @@ namespace OnePushSnap
             String my_file = String.Join("", new String[]{
                 Properties.Resources.file_prefix, 
                 DateTime.Now.ToString("yyyyMMddHHmmss"), 
-                DateTime.Now.Millisecond.ToString(), ".", Properties.Settings.Default.save_image_type});
+                DateTime.Now.Millisecond.ToString("000"), 
+                ".", Properties.Settings.Default.save_image_type});
 
             if (Directory.Exists(Properties.Settings.Default.save_folder)){
                 my_dir = Properties.Settings.Default.save_folder;
